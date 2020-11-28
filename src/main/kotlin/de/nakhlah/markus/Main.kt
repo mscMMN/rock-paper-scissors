@@ -5,7 +5,7 @@ import de.nakhlah.markus.game.Game
 import de.nakhlah.markus.player.Player
 import de.nakhlah.markus.player.PlayerStrategyFixed
 
-fun main(args: Array<String>) {
+fun main() {
     println("Welcome to Rock, Paper, Scissors!")
 
     val firstPlayer = Player("Markus")

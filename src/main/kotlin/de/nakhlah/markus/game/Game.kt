@@ -11,18 +11,34 @@ class Game(private val firstPlayer: Player, private val secondPlayer: Player, nu
     private val rounds = (1..numberOfRounds).map { Round(it) }
 
     fun play() {
-        println("The game begins")
+        println("The game between ${firstPlayer.name} and ${secondPlayer.name} begins")
 
         rounds.forEach { it.play(firstPlayer, secondPlayer) }
 
         println("The game is over")
+        println()
 
-        val winsForFirstPlayer = rounds.count { firstPlayer == it.winner }
-        val winsForSecondPlayer = rounds.count { secondPlayer == it.winner }
+        val winsForFirstPlayer = countWinsForPlayer(firstPlayer)
+        val winsForSecondPlayer = countWinsForPlayer(secondPlayer)
         val draws = rounds.count { it.isDraw }
 
         println("${firstPlayer.name} has won $winsForFirstPlayer times")
         println("${secondPlayer.name} has won $winsForSecondPlayer times")
         println("Out of ${rounds.size} rounds there have been $draws draws")
+        println()
+
+        val overallWinner: Player? = determineOverallWinner(winsForFirstPlayer, winsForSecondPlayer)
+
+        if (overallWinner != null) {
+            println("The overall winner of this game is: $overallWinner")
+        } else {
+            println("No winner - no loser! Play again!")
+        }
     }
+
+    private fun determineOverallWinner(winsForFirstPlayer: Int, winsForSecondPlayer: Int) =
+            if (winsForFirstPlayer == winsForSecondPlayer) null else if (winsForFirstPlayer > winsForSecondPlayer) firstPlayer else secondPlayer
+
+    private fun countWinsForPlayer(firstPlayer: Player) = rounds.count { firstPlayer == it.winner }
+
 }

@@ -1,7 +1,7 @@
 package de.nakhlah.markus.player
 
-import de.nakhlah.markus.Action
-import org.junit.jupiter.api.Assertions.*
+import de.nakhlah.markus.game.Action
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 

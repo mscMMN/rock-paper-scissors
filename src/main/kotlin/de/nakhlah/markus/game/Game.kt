@@ -1,4 +1,4 @@
-package de.nakhlah.markus
+package de.nakhlah.markus.game
 
 import de.nakhlah.markus.player.Player
 

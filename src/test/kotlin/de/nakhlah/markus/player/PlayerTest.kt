@@ -18,16 +18,18 @@ internal class PlayerTest {
 
     private lateinit var playerSUT: Player
 
+    private val playerName = "Markus"
+
     @BeforeEach
     internal fun setUp() {
         every { playerStrategy.showAction() } returns Action.PAPER
 
-        playerSUT = Player("Markus", playerStrategy)
+        playerSUT = Player(playerName, playerStrategy)
     }
 
     @Test
     internal fun showAction() {
-        assertEquals("Markus", playerSUT.name)
+        assertEquals(playerName, playerSUT.name)
         assertEquals(Action.PAPER, playerSUT.showAction())
 
         verify { playerStrategy.showAction() }
@@ -35,6 +37,6 @@ internal class PlayerTest {
 
     @Test
     internal fun shouldUseTheNameForToString() {
-        assertEquals("Markus", "$playerSUT")
+        assertEquals(playerName, "$playerSUT")
     }
 }

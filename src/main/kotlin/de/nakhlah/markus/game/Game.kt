@@ -11,7 +11,7 @@ class Game(private val firstPlayer: Player, private val secondPlayer: Player, nu
     private val rounds = (1..numberOfRounds).map { Round(it) }
 
     fun play() {
-        println("The game between ${firstPlayer.name} and ${secondPlayer.name} begins")
+        println("The game between $firstPlayer and $secondPlayer begins")
 
         rounds.forEach { it.play(firstPlayer, secondPlayer) }
 
@@ -22,8 +22,8 @@ class Game(private val firstPlayer: Player, private val secondPlayer: Player, nu
         val winsForSecondPlayer = countWinsForPlayer(secondPlayer)
         val draws = rounds.count { it.isDraw }
 
-        println("${firstPlayer.name} has won $winsForFirstPlayer times")
-        println("${secondPlayer.name} has won $winsForSecondPlayer times")
+        println("$firstPlayer has won $winsForFirstPlayer times")
+        println("$secondPlayer has won $winsForSecondPlayer times")
         println("Out of ${rounds.size} rounds there have been $draws draws")
         println()
 

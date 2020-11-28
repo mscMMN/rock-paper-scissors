@@ -2,7 +2,11 @@ package de.nakhlah.markus
 
 import de.nakhlah.markus.player.Player
 
-class Game(private val firstPlayer: Player, private val secondPlayer: Player, private val numberOfRounds: Int) {
+class Game(private val firstPlayer: Player, private val secondPlayer: Player, numberOfRounds: Int = 3) {
+
+    init {
+        if (numberOfRounds < 1) throw IllegalArgumentException("You must play at least one round!")
+    }
 
     private val rounds = (1..numberOfRounds).map { Round(it) }
 

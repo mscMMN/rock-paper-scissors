@@ -18,6 +18,10 @@ class Game(private val firstPlayer: Player, private val secondPlayer: Player, nu
         println("The game is over")
         println()
 
+        printStatistics()
+    }
+
+    private fun printStatistics() {
         val winsForFirstPlayer = countWinsForPlayer(firstPlayer)
         val winsForSecondPlayer = countWinsForPlayer(secondPlayer)
         val draws = rounds.count { it.isDraw }

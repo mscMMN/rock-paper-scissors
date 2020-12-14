@@ -11,6 +11,8 @@ fun main() {
     val firstPlayer = Player("Markus")
     val secondPlayer = Player("The Rock™", PlayerStrategyFixed(Action.ROCK))
 
-    Game(firstPlayer, secondPlayer, 100).play()
+    val statistics = Game(firstPlayer, secondPlayer, 100).play()
+
+    statistics.print()
 }
 

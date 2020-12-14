@@ -38,12 +38,18 @@ internal class GameTest {
 
     @Test
     internal fun shouldPlaySpecifiedAmountOfRounds() {
-        every { firstPlayer.showAction() } returns Action.PAPER
+        every { firstPlayer.showAction() } returnsMany listOf(Action.PAPER, Action.ROCK, Action.SCISSORS, Action.SCISSORS, Action.ROCK)
         every { secondPlayer.showAction() } returns Action.SCISSORS
 
-        Game(firstPlayer, secondPlayer, 42).play()
+        val game = Game(firstPlayer, secondPlayer, 5)
+        val statistics = game.play()
 
-        verify(exactly = 42) { firstPlayer.showAction() }
-        verify(exactly = 42) { secondPlayer.showAction() }
+        assertEquals(2, statistics.firstPlayerWins)
+        assertEquals(1, statistics.secondPlayerWins)
+        assertEquals(2, statistics.numberOfDraws)
+
+        verify(exactly = 5) { firstPlayer.showAction() }
+        verify(exactly = 5) { secondPlayer.showAction() }
     }
+
 }

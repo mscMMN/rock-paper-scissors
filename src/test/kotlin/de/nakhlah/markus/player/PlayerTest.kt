@@ -28,11 +28,17 @@ internal class PlayerTest {
     }
 
     @Test
-    internal fun showAction() {
-        assertEquals(playerName, playerSUT.name)
-        assertEquals(Action.PAPER, playerSUT.showAction())
+    internal fun shouldPlayAnAction() {
+        val playedAction = playerSUT.showAction()
+
+        assertEquals(Action.PAPER, playedAction)
 
         verify { playerStrategy.showAction() }
+    }
+
+    @Test
+    internal fun shouldHaveName() {
+        assertEquals(playerName, playerSUT.name)
     }
 
     @Test

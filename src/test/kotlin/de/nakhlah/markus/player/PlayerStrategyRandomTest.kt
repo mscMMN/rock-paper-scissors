@@ -15,7 +15,7 @@ internal class PlayerStrategyRandomTest {
     }
 
     @Test
-    internal fun showAction() {
+    internal fun `Show any valid action`() {
         assertTrue(playerStrategyRandomSUT.showAction() in Action.values())
     }
 }
